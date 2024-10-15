@@ -12,7 +12,7 @@
 
 # Brute force solution
 
-def longest_consecutive_brute_force(nums)
+def longest_consecutive(nums)
   return 0 if nums.empty?
   nums.sort!
 
@@ -32,31 +32,32 @@ def longest_consecutive_brute_force(nums)
   [max_length, current_length].max
 end
 
-# Optimized solution using a set
-
-def longest_consecutive(nums)
+def longest_consecutive_x(nums)
   return 0 if nums.empty?
 
+  # Convert the array to a set for O(1) lookups
   num_set = nums.to_set
   max_length = 0
 
+  # Iterate through each number in the set
   num_set.each do |num|
-    prev_num = num - 1
-
-    if !num_set.include?(prev_num)
-      current_num = num
+    # Only start counting if the previous number is not in the set
+    if !num_set.include?(num - 1)
       current_length = 1
+      current_num = num
 
-      next_num = num + 1
-      
-      while num_set.include?(next_num)
+      # Count consecutive numbers starting from num
+      while num_set.include?(current_num + 1)
         current_num += 1
         current_length += 1
       end
 
+      # Update the max_length with the current sequence length
       max_length = [max_length, current_length].max
     end
   end
 
   max_length
 end
+
+
