@@ -81,6 +81,12 @@ def longest_consecutive(nums)
   max_length
 end
 
+# Complexity Analysis for optimal solution O(n) time complexity
+
+# loop through the array O(n)
+# loop through the set O(1)
+# Total time complexity O(n) + O(1) = O(n) because O(n) is the dominant term
+
 
 
 pp longest_consecutive([100, 4, 200, 1, 3, 2]) # 4
