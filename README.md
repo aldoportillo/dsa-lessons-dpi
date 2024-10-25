@@ -1,81 +1,17 @@
-# Reverse Linked List in Ruby
+# Data Structures and Algorithms for Deep Dive Fridays
 
 ## Introduction
 
-This repo implements a solution to the classic computer science problem of reversing a singly linked list using Ruby. The solution includes an iterative method to reverse the list, and the project is set up with RSpec tests to ensure correctness.
+This repository contains the materials for the Deep Dive Fridays sessions on Data Structures and Algorithms. You can view the recordings on canvas.
 
-## The Problem
+## How To Use
 
-### Task
+1. Clone the repository
+2. Bundle Install
+3. `cd` into the directory of the topic you want to learn about
+4. Write your code in main.rb and run it with `ruby main.rb`
+5. Test your code with `rspec spec/test_name_spec.rb`
 
-Given the head of a singly linked list, reverse the list, and return the new head.
+## Need Help?
 
-### Example
-
-Consider a linked list `1 -> 2 -> 3 -> nil`. After reversing, it should become `3 -> 2 -> 1 -> nil`.
-
-### Input
-
-- The input is the head node of a singly linked list.
-
-### Output
-
-- The output is the new head node of the reversed singly linked list.
-
-### Edge Cases
-
-- Empty list (`nil`): The result should also be `nil`.
-- Single-element list: The list remains the same after reversal.
-
-## Understanding the Problem
-
-A singly linked list is a data structure where each element (node) contains a value and a pointer to the next node in the sequence. The last node points to `nil`, indicating the end of the list.
-
-### Example to Visualize
-
-For a list `1 -> 2 -> 3 -> nil`:
-
-- Reversing the list involves changing the pointers of each node so that the list becomes `3 -> 2 -> 1 -> nil`.
-
-## Solution Approaches
-
-### Iterative Approach
-
-The iterative solution uses three pointers: `prev`, `current`, and `next_node` to reverse the pointers of the linked list in-place.
-
-### Recursive Approach
-
-The recursive solution reverses the linked list by recursively calling the function with the next node as the new head and the current node as the previous node.
-
-## Running Tests
-
-The project uses RSpec for testing.
-
-### Steps to Run Tests
-
-1. Ensure you have RSpec installed. If not, run:
-
-   ```sh
-
-   bundle install
-
-   ```
-
-2. Run the tests using the following command:
-
-   ```sh
-
-   rspec
-
-   ```
-
-3. RSpec will run all the test cases defined in `spec/linked_list_spec.rb` and report the results.
-
-### Example Test Results
-
-```less
-
-Finished in 0.0023 seconds (files took 0.0803 seconds to load)
-5 examples, 0 failures
-
-```
+Every directory contains a `md` file containing the lesson plan for the topic. If you have any questions, feel free to ask in the discord.

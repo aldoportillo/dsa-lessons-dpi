@@ -1,60 +1,51 @@
 require 'debug'
+
 # Longest Consecutive Sequence
 
-# Given an unsorted array of integers, find the length of the longest consecutive elements sequence.
+## Given an unsorted array of integers, find the length of the longest consecutive elements sequence.
 
-# Your algorithm should run in O(n) complexity.
+## For example,
+## Given [100, 4, 200, 1, 3, 2],
+## The longest consecutive elements sequence is [100, 4, 200, 1, 3, 2]. Return its length: 4.
 
-# Example:
+## Input: type Array - sequence of integers
+## Output: type Integer - represents the length of the longest consecutive elements sequence
 
-# Input: [100, 4, 200, 1, 3, 2]
-# Output: 4
-# Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.
+arr = [100, 4, 200, 1, 3, 2]
 
-# Brute force solution
+def longest_consecutive_sequence(nums)
+  nums.sort! # nlog(n)
 
-def longest_consecutive_brute_force(nums)
+  current_length = 1 #Could be a issue with scopes
+  max_length = 0
 
-  return 0 if nums.empty?
-  # Sort array
-  nums.sort! # O(nlogn) time complexity
+  nums.each_with_index do | current_num, i|  # Time: O(n)
+    next_num = nums[i + 1]
 
-  # Initialize max_length and current_length (incrementors)
-  max_length = 1
-  current_length = 1
+    next if next_num == nil 
 
-  # Iterate through the array O(n) time complexity
-  nums.each_with_index do |number, i| # Question: on the first iteration what is i? Answer: 0 so what is nums[i - 1]? Answer: nil so we need to handle this case in the loop below 
-    # set previous number
-    next if i == 0;
-    # debugger
-    previous_number = nums[i - 1] #fun activiy here. What is the value of nums[i-1] well if i is 0 then nums[-1] is the last element in the array we can handle this casse above but we don't need to
-
-
-    # Check if number is consecutive
-    if number == previous_number + 1
-      current_length += 1
-    elsif number != previous_number
-      max_length = [max_length, current_length].max
-      current_length = 1
+    if current_num == next_num - 1
+      current_length = current_length + 1 
     end
-  end
-  [max_length, current_length].max
+    # if current_length > max_length 
+    #   max_length = current_length
+    # end
+    max_length = [max_length, current_length].max #🧼
+  end    
+
+  max_length  
 end
 
-# Complexity Analysis for brute force solution
+# Time Complexity Analysis: n + nlog(n) => nlog(n)
 
-# loop through the array O(n)
-# sort the array O(nlogn)
-# Total time complexity O(nlogn) + O(n) = O(nlogn) because O(nlogn) is the dominant term
-
-pp longest_consecutive_brute_force([100, 4, 200, 1, 3, 2]) # 4
-pp longest_consecutive_brute_force([100, 4, 200, 1, 3, 2, 5, 6, 7, 8, 9, 10]) 
-pp longest_consecutive_brute_force([100, 4, 200, 1, 3, 2, 5, 6, 7, 8, 9, 10, 11, 11, 13])
-pp longest_consecutive_brute_force([1]) 
+## Key Take Aways:
+## Learned Pointers (indexes), Standard Code Practices
+## New Ruby Methods: Array.each_with_index, Array.sort!
+## Building on fundamentals conditionals, comparison operators,  Loops (with indexes)
+## Advanced Concepts: Guard Clauses
 
 
-def longest_consecutive(nums)
+def longest_consecutive_sequence_optimal(nums)
   return 0 if nums.empty?
 
   num_set = nums.to_set # O(n) time complexity can also be a hash
@@ -69,7 +60,7 @@ def longest_consecutive(nums)
       current_num = num
       current_length = 1
 
-      while num_set.include?(current_num + 1) # O(1) time complexity
+      while num_set.include?(current_num + 1) # O(1) time complexity can you explain why this loop is tecnically O(1)? Think of why pushing to a array is O(1) space
         current_num += 1
         current_length += 1
       end
@@ -80,16 +71,3 @@ def longest_consecutive(nums)
 
   max_length
 end
-
-# Complexity Analysis for optimal solution O(n) time complexity
-
-# loop through the array O(n)
-# loop through the set O(1)
-# Total time complexity O(n) + O(1) = O(n) because O(n) is the dominant term
-
-
-
-pp longest_consecutive([100, 4, 200, 1, 3, 2]) # 4
-pp longest_consecutive([100, 4, 200, 1, 3, 2, 5, 6, 7, 8, 9, 10]) 
-pp longest_consecutive([100, 4, 200, 1, 3, 2, 5, 6, 7, 8, 9, 10, 11, 11, 13])
-pp longest_consecutive([1]) 
