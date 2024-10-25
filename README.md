@@ -15,3 +15,7 @@ This repository contains the materials for the Deep Dive Fridays sessions on Dat
 ## Need Help?
 
 Every directory contains a `md` file containing the lesson plan for the topic. If you have any questions, feel free to ask in the discord.
+
+## Complexity Analysis Chart
+
+![Complexity Analysis Chart](https://res.cloudinary.com/dmxgp9oq2/image/upload/v1708977824/appdev-lessons/ruby-data-structures-algorithms-intro/main/big-o-complexity.png)
