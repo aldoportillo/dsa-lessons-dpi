@@ -13,7 +13,7 @@ require 'debug'
 
 arr = [100, 4, 200, 1, 3, 2]
 
-def longest_consecutive_sequence(nums)
+def longest_consecutive_sequence_brute_force(nums)
   nums.sort! # nlog(n)
 
   current_length = 1 #Could be a issue with scopes
@@ -45,7 +45,7 @@ end
 ## Advanced Concepts: Guard Clauses
 
 
-def longest_consecutive_sequence_optimal(nums)
+def longest_consecutive_sequence(nums)
   return 0 if nums.empty?
 
   num_set = nums.to_set # O(n) time complexity can also be a hash
@@ -53,10 +53,7 @@ def longest_consecutive_sequence_optimal(nums)
   max_length = 0 
 
   num_set.each do |num| # O(n) time complexity
-    pp "iteration #{num}" 
-    debugger
     if !num_set.include?(num - 1) # O(1) time complexity
-      pp "iteration #{num}" 
       current_num = num
       current_length = 1
 
